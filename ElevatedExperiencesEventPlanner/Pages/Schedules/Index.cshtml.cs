@@ -56,7 +56,7 @@ namespace ElevatedExperiencesEventPlanner.Pages.Schedules
                 case "LocAsc":
                     schedService = schedService.OrderBy(r => r.Location);
                     break;
-                case "DateAsc":
+                case "DateDesc":
                     schedService = schedService.OrderBy(r => r.ScheduleDate);
                     break;
                 case "DateAsc":
