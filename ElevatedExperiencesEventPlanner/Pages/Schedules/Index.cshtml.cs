@@ -29,11 +29,13 @@ namespace ElevatedExperiencesEventPlanner.Pages.Schedules
 
         public string NameSort { get; set; }
         public string LocationSort { get; set; }
+        public string DateSort { get; set; }
 
         public async Task OnGetAsync(string sortOrder)
         {
             NameSort = String.IsNullOrEmpty(sortOrder) ? "NameDesc" : "";
             LocationSort = sortOrder == "LocAsc" ? "LocDesc" : "LocAsc";
+            DateSort = sortOrder == "DateAsc" ? "DateDesc" : "DateAsc";
 
             var schedService = from r in _context.Schedule
                                   select r;
@@ -53,6 +55,12 @@ namespace ElevatedExperiencesEventPlanner.Pages.Schedules
                     break;
                 case "LocAsc":
                     schedService = schedService.OrderBy(r => r.Location);
+                    break;
+                case "DateAsc":
+                    schedService = schedService.OrderBy(r => r.ScheduleDate);
+                    break;
+                case "DateAsc":
+                    schedService = schedService.OrderBy(r => r.ScheduleDate);
                     break;
 
                 default:
